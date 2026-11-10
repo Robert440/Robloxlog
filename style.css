@@ -15,6 +15,7 @@ body {
     position: relative;
 }
 
+/* ФОН - убрал фильтр затемнения, теперь он яркий */
 .bg-image {
     position: fixed;
     top: 0;
@@ -50,17 +51,18 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-right: 8px;
 }
 
 .nav-links {
     display: flex;
-    gap: 24px;
+    gap: 20px;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.2px;
 }
@@ -90,11 +92,12 @@ body {
     background-color: #2f3133;
     border: 1px solid #2f3133;
     border-radius: 4px;
-    padding: 8px 12px 8px 36px;
+    padding: 6px 12px 6px 36px;
     color: #fff;
-    font-size: 15px;
-    width: 280px;
+    font-size: 14px;
+    width: 260px;
     outline: none;
+    height: 32px;
 }
 
 .search-bar input::placeholder {
@@ -109,19 +112,22 @@ body {
     background-color: #00a2ff;
     color: #fff;
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 6px 16px;
     border-radius: 4px;
     font-weight: 600;
     font-size: 15px;
     border: none;
     cursor: pointer;
+    height: 32px;
+    display: flex;
+    align-items: center;
 }
 
 .register-btn:hover {
     background-color: #008be0;
 }
 
-/* Модалка */
+/* Модалка - точные размеры и цвета */
 .login-container {
     position: absolute;
     top: 50%;
@@ -130,18 +136,17 @@ body {
     background-color: #232527;
     border-radius: 8px;
     padding: 24px 30px 30px 30px;
-    width: 430px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+    width: 420px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
     z-index: 10;
     text-align: center;
 }
 
 .login-container h1 {
-    font-size: 28px;
+    font-size: 26px; /* Вернул нормальный размер */
     font-weight: 700;
     margin-bottom: 20px;
     color: #fff;
-    letter-spacing: 0.5px;
 }
 
 #loginForm {
@@ -157,9 +162,9 @@ body {
     border: 1px solid #393b3d;
     border-radius: 4px;
     padding: 0 16px;
-    height: 44px; /* Точная высота как на оригинале */
+    height: 44px;
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     outline: none;
 }
 
@@ -181,7 +186,7 @@ body {
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .login-btn:hover {
@@ -195,18 +200,18 @@ body {
 .forgot-password a {
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
 }
 
 .forgot-password a:hover {
     text-decoration: underline;
 }
 
+/* Линия разделитель - растянута ровно от края до края */
 .divider {
     height: 1px;
     background-color: #393b3d;
-    margin: 0 -30px 16px -30px; /* Растягиваем линию на всю ширину */
+    margin: 0 -30px 16px -30px;
 }
 
 .login-options {
@@ -232,14 +237,14 @@ body {
 }
 
 .footer-text {
-    font-size: 15px;
+    font-size: 14px;
     color: #b8b8b8;
 }
 
 .footer-text a {
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .footer-text a:hover {
