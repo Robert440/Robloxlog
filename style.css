@@ -15,21 +15,20 @@ body {
     position: relative;
 }
 
-/* ФОН */
 .bg-image {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('bg.jpg'); /* Твой фон */
+    background-image: url('bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
 }
 
-/* Навигация */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -51,12 +50,6 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    gap: 8px;
-}
-
-.logo svg {
-    width: 85px;
-    height: 25px;
 }
 
 .nav-links {
@@ -67,8 +60,9 @@ body {
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
+    letter-spacing: 0.2px;
 }
 
 .nav-links a:hover {
@@ -78,7 +72,7 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
 .search-bar {
@@ -89,17 +83,17 @@ body {
 
 .search-icon {
     position: absolute;
-    left: 10px;
+    left: 12px;
 }
 
 .search-bar input {
     background-color: #2f3133;
     border: 1px solid #2f3133;
     border-radius: 4px;
-    padding: 6px 12px 6px 34px;
+    padding: 8px 12px 8px 36px;
     color: #fff;
-    font-size: 14px;
-    width: 220px;
+    font-size: 15px;
+    width: 280px;
     outline: none;
 }
 
@@ -115,10 +109,12 @@ body {
     background-color: #00a2ff;
     color: #fff;
     text-decoration: none;
-    padding: 6px 16px;
+    padding: 8px 16px;
     border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
 }
 
 .register-btn:hover {
@@ -128,29 +124,30 @@ body {
 /* Модалка */
 .login-container {
     position: absolute;
-    top: 53%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #232527;
     border-radius: 8px;
-    padding: 32px 36px 40px 36px;
-    width: 480px;
+    padding: 24px 30px 30px 30px;
+    width: 430px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
     z-index: 10;
     text-align: center;
 }
 
 .login-container h1 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     color: #fff;
+    letter-spacing: 0.5px;
 }
 
 #loginForm {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 16px;
 }
 
@@ -159,14 +156,16 @@ body {
     background-color: #2f3133;
     border: 1px solid #393b3d;
     border-radius: 4px;
-    padding: 14px 16px;
+    padding: 0 16px;
+    height: 44px; /* Точная высота как на оригинале */
     color: #fff;
-    font-size: 15px;
+    font-size: 16px;
     outline: none;
 }
 
 #loginForm input::placeholder {
     color: #b8b8b8;
+    font-weight: 400;
 }
 
 #loginForm input:focus {
@@ -178,11 +177,11 @@ body {
     color: #fff;
     border: 1px solid #444;
     border-radius: 4px;
-    padding: 12px;
+    height: 44px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .login-btn:hover {
@@ -190,13 +189,14 @@ body {
 }
 
 .forgot-password {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .forgot-password a {
     color: #fff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .forgot-password a:hover {
@@ -206,7 +206,7 @@ body {
 .divider {
     height: 1px;
     background-color: #393b3d;
-    margin: 0 -36px 20px -36px;
+    margin: 0 -30px 16px -30px; /* Растягиваем линию на всю ширину */
 }
 
 .login-options {
@@ -218,12 +218,12 @@ body {
 
 .secondary-btn {
     background-color: #2f3133;
-    border: 1px solid #2f3133;
+    border: none;
     color: #fff;
-    padding: 14px;
+    height: 44px;
     border-radius: 4px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -232,7 +232,7 @@ body {
 }
 
 .footer-text {
-    font-size: 14px;
+    font-size: 15px;
     color: #b8b8b8;
 }
 
