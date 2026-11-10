@@ -6,34 +6,28 @@
 
 body {
     background-color: #000;
-    overflow: hidden; /* Убираем скролл */
+    overflow: hidden;
 }
 
-/* Картинка заполняет весь экран */
+/* Картинка растягивается на весь экран */
 .fullscreen-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: fill; /* Растягивает картинку ровно под размер окна */
+    object-fit: fill;
     z-index: 1;
 }
 
-/* Форма позиционируется поверх картинки */
+/* Прозрачная форма */
 .overlay-form {
     position: absolute;
-    /* 
-       ТУТ МЫ НАСТРАИВАЕМ ПОЗИЦИЮ 
-       Если поля не попадают ровно на картинку, меняй эти проценты.
-    */
-    top: 50%; 
+    top: 48%; /* Немного выше центра, чтобы попасть на инпуты */
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /* Размеры области, где находятся инпуты на картинке */
-    width: 420px; 
-    height: 160px; /* Примерная высота двух инпутов и кнопки */
+    width: 420px; /* Ширина инпутов на картинке */
+    height: 180px; /* Высота области с полями */
     
     display: flex;
     flex-direction: column;
@@ -41,20 +35,20 @@ body {
     z-index: 10;
 }
 
-/* Делаем инпуты полностью прозрачными, но кликабельными */
+/* Невидимые поля ввода */
 .invisible-input {
     width: 100%;
-    height: 48px; /* Высота инпута на картинке */
+    height: 48px; /* Высота поля на картинке */
     background: transparent;
     border: none;
     outline: none;
-    color: transparent; /* Текст, который печатает юзер, невидим (виден только курсор) */
-    caret-color: white; /* Белый курсор */
+    color: white; /* Текст, который ты вводишь */
+    caret-color: white; /* Курсор */
     font-size: 16px;
     padding: 0 15px;
 }
 
-/* Кнопка "Авторизоваться" (невидимая) */
+/* Невидимая кнопка */
 .invisible-btn {
     width: 100%;
     height: 48px;
@@ -62,19 +56,3 @@ body {
     border: none;
     cursor: pointer;
 }
-
-/* 
-   Если хочешь видеть, куда ты кликаешь при настройке, 
-   раскомментируй код ниже (убери /* и * /) 
-*/
-
-/*
-.invisible-input {
-    background: rgba(255, 0, 0, 0.3); 
-    border: 1px solid red;
-}
-.invisible-btn {
-    background: rgba(0, 255, 0, 0.3);
-    border: 1px solid green;
-}
-*/
