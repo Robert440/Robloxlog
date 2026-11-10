@@ -2,262 +2,79 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Gotham SSm', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body {
     background-color: #000;
-    color: #fff;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    overflow: hidden; /* Убираем скролл */
 }
 
-/* ЧИСТЫЙ ФОН БЕЗ ФИЛЬТРОВ И ЗАТЕМНЕНИЙ */
-.bg-image {
-    position: fixed;
+/* Картинка заполняет весь экран */
+.fullscreen-bg {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    object-fit: fill; /* Растягивает картинку ровно под размер окна */
     z-index: 1;
 }
 
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #191b1f;
-    padding: 0 24px;
-    height: 48px;
-    position: relative;
-    z-index: 10;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex: 1;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 8px;
-}
-
-.logo-text {
-    color: #fff;
-    font-weight: 900;
-    font-size: 20px;
-    letter-spacing: -0.5px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: #b8b8b8;
-}
-
-/* Поисковик */
-.nav-center {
-    display: flex;
-    justify-content: center;
-    flex: 2;
-}
-
-.search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 420px;
-}
-
-.search-icon {
+/* Форма позиционируется поверх картинки */
+.overlay-form {
     position: absolute;
-    left: 12px;
-}
-
-.search-bar input {
-    background-color: #232527; /* Точный цвет как у модалки */
-    border: 1px solid #393b3d; /* Тонкая рамка */
-    border-radius: 4px;
-    padding: 0 12px 0 38px;
-    color: #fff;
-    font-size: 15px;
-    width: 100%;
-    height: 34px;
-    outline: none;
-}
-
-.search-bar input::placeholder {
-    color: #b8b8b8;
-}
-
-.nav-right {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-}
-
-.register-btn {
-    background-color: #00a2ff; /* Точный синий */
-    color: #fff;
-    text-decoration: none;
-    padding: 0 16px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.register-btn:hover {
-    background-color: #008be0;
-}
-
-/* Модалка */
-.login-container {
-    position: absolute;
-    top: 50%;
+    /* 
+       ТУТ МЫ НАСТРАИВАЕМ ПОЗИЦИЮ 
+       Если поля не попадают ровно на картинку, меняй эти проценты.
+    */
+    top: 50%; 
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #232527; 
-    border-radius: 8px;
-    padding: 36px 40px 40px 40px;
-    width: 440px; /* Ширина под русский текст */
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    
+    /* Размеры области, где находятся инпуты на картинке */
+    width: 420px; 
+    height: 160px; /* Примерная высота двух инпутов и кнопки */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 10;
-    text-align: center;
 }
 
-.login-container h1 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
-#loginForm {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-#loginForm input {
+/* Делаем инпуты полностью прозрачными, но кликабельными */
+.invisible-input {
     width: 100%;
-    background-color: #2f3133; 
-    border: 1px solid #393b3d;
-    border-radius: 4px;
-    padding: 0 16px;
-    height: 44px;
-    color: #fff;
-    font-size: 15px;
-    outline: none;
-}
-
-#loginForm input::placeholder {
-    color: #b8b8b8;
-}
-
-#loginForm input:focus {
-    border-color: #666;
-}
-
-.login-btn {
-    background-color: #232527; 
-    color: #fff;
-    border: 1px solid #4a4c50; /* Темно-серая обводка */
-    border-radius: 4px;
-    height: 44px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 8px;
-}
-
-.login-btn:hover {
-    background-color: #32353a;
-}
-
-.forgot-password {
-    margin-bottom: 20px;
-}
-
-.forgot-password a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.divider {
-    height: 1px;
-    background-color: #393b3d;
-    margin: 0 -40px 20px -40px; /* Растянута на всю ширину */
-}
-
-.login-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
-}
-
-.secondary-btn {
-    background-color: #32353a; /* Точный цвет кнопок */
+    height: 48px; /* Высота инпута на картинке */
+    background: transparent;
     border: none;
-    color: #fff;
-    height: 44px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 15px;
+    outline: none;
+    color: transparent; /* Текст, который печатает юзер, невидим (виден только курсор) */
+    caret-color: white; /* Белый курсор */
+    font-size: 16px;
+    padding: 0 15px;
+}
+
+/* Кнопка "Авторизоваться" (невидимая) */
+.invisible-btn {
+    width: 100%;
+    height: 48px;
+    background: transparent;
+    border: none;
     cursor: pointer;
 }
 
-.secondary-btn:hover {
-    background-color: #393b3d;
-}
+/* 
+   Если хочешь видеть, куда ты кликаешь при настройке, 
+   раскомментируй код ниже (убери /* и * /) 
+*/
 
-.footer-text {
-    font-size: 14px;
-    color: #b8b8b8;
+/*
+.invisible-input {
+    background: rgba(255, 0, 0, 0.3); 
+    border: 1px solid red;
 }
-
-.footer-text a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+.invisible-btn {
+    background: rgba(0, 255, 0, 0.3);
+    border: 1px solid green;
 }
-
-.footer-text a:hover {
-    text-decoration: underline;
-}
+*/
