@@ -20,7 +20,8 @@
     }
 
     .login-form {
-        width: 320px;
+        width: 380px;
+        max-width: calc(100vw - 32px);
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -31,13 +32,14 @@
         box-sizing: border-box;
         width: 100%;
         height: 48px;
-        padding: 0 14px;
-        border: 1px solid #55595e;
-        border-radius: 8px;
-        background: #292c30;
+        padding: 0 16px;
+        border: 1px solid #393b3d;
+        border-radius: 4px;
+        background: #2f3133;
         color: #ffffff;
-        font-size: 16px;
+        font-size: 15px;
         outline: none;
+        transition: border-color 0.1s;
     }
 
     .login-form input::placeholder {
@@ -45,17 +47,18 @@
     }
 
     .login-form input:focus {
-        border-color: #ffffff;
+        border-color: #666;
     }
 
     .login-form button {
         height: 48px;
         border: 1px solid #555;
-        border-radius: 8px;
+        border-radius: 4px;
         background: #232527;
         color: #fff;
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 500;
+        margin-top: 4px;
         cursor: pointer;
         transition: background 0.2s;
     }
@@ -68,8 +71,8 @@
 
 <body>
 <form class="login-form" onsubmit="return false;">
-    <input type="text" placeholder="Имя пользователя/Электронная почта/Телефон" autocomplete="off">
-    <input type="password" placeholder="Пароль" autocomplete="new-password">
+    <input type="text" placeholder="Логин" aria-label="Логин" autocomplete="off">
+    <input type="password" placeholder="Пароль" aria-label="Пароль" autocomplete="new-password">
     <button type="button">Авторизоваться</button>
 </form>
 </body>
