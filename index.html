@@ -1,27 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Демонстрационная форма интерфейса. Введённые данные не отправляются и не сохраняются.">
-    <title>Демонстрационная форма</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Демонстрационная форма</title>
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-form {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 80px;
+    }
+
+    .login-form input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 48px;
+        padding: 0 14px;
+        border: 1px solid #55595e;
+        border-radius: 8px;
+        background: #292c30;
+        color: #ffffff;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .login-form input::placeholder {
+        color: #b8bbbf;
+    }
+
+    .login-form input:focus {
+        border-color: #ffffff;
+    }
+
+    .login-form button {
+        height: 48px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background: #232527;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .login-form button:hover {
+        background: #32353a;
+    }
+</style>
 </head>
+
 <body>
-    <form class="login-form" autocomplete="off" onsubmit="return false;">
-        <input
-            type="text"
-            placeholder="Имя пользователя"
-            aria-label="Имя пользователя"
-            autocomplete="off"
-        >
-        <input
-            type="password"
-            placeholder="Пароль для демонстрации"
-            aria-label="Пароль для демонстрации"
-            autocomplete="new-password"
-        >
-        <button type="button">Проверить макет</button>
-    </form>
+<form class="login-form" onsubmit="return false;">
+    <input type="text" placeholder="Имя пользователя/Электронная почта/Телефон" autocomplete="off">
+    <input type="password" placeholder="Пароль" autocomplete="new-password">
+    <button type="button">Авторизоваться</button>
+</form>
 </body>
 </html>
