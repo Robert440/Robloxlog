@@ -7,53 +7,80 @@
 
 body {
     background-color: #000;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Центрируем контейнер по экрану */
 }
 
-/* Твой скриншот ровно на весь экран */
-.fullscreen-bg {
-    position: absolute;
+/* Фон (растягивается на весь экран) */
+.bg-image {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: fill;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
 }
 
-/* Контейнер для трех невидимых элементов */
-.invisible-form {
+/* Коробка с тремя кнопками */
+.login-box {
     position: absolute;
-    /* ВОТ ЗДЕСЬ МЫ НАСТРАИВАЕМ ПОЗИЦИЮ */
-    top: 46%; /* Опускаем ниже заголовка "Войти в Roblox" */
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 420px; /* Ширина инпутов на твоем скрине */
-    
-    display: flex;
-    flex-direction: column;
-    gap: 12px; /* Расстояние между ними */
+    width: 380px; /* Ширина */
     z-index: 10;
 }
 
-/* Невидимые поля ввода */
-.invisible-form input {
-    width: 100%;
-    background: transparent; /* Полностью прозрачный фон */
-    border: none; /* Никаких рамок */
-    outline: none;
-    height: 48px; /* Высота поля на картинке */
-    color: #fff; /* Текст, который ты печатаешь, будет белым */
-    font-size: 16px;
-    padding: 0 16px;
-    caret-color: #fff; /* Белый курсор */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* Невидимая кнопка */
-.invisible-btn {
+/* Поля ввода */
+input {
     width: 100%;
-    height: 48px; /* Высота кнопки на картинке */
-    background: transparent;
-    border: none;
+    background-color: #2f3133; /* Темно-серый фон */
+    border: 1px solid #393b3d; /* Тонкая рамка */
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 48px; /* Высота как на оригинале */
+    color: #fff; /* Белый текст */
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.1s;
+}
+
+/* Текст исчезает при клике (это стандартное поведение) */
+input::placeholder {
+    color: #b8b8b8;
+}
+
+input:focus {
+    border-color: #666;
+}
+
+/* Кнопка "Авторизоваться" */
+.login-btn {
+    width: 100%;
+    background-color: #232527; /* Темный фон */
+    color: #fff;
+    border: 1px solid #555; /* Серая обводка */
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
+    margin-top: 4px;
+}
+
+.login-btn:hover {
+    background-color: #32353a;
 }
