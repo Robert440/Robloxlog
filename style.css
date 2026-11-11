@@ -1,86 +1,103 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Gotham SSm', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
 }
 
 body {
-    background-color: #000;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Центрируем контейнер по экрану */
+    margin: 0;
+    min-height: 100vh;
+    padding: 24px;
+    display: grid;
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #171b22 url("bg.jpg") center / cover fixed no-repeat;
+    isolation: isolate;
+    position: relative;
 }
 
-/* Фон (растягивается на весь экран) */
-.bg-image {
+body::before {
+    content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
+    inset: 0;
+    z-index: -1;
+    background: rgba(10, 14, 21, 0.72);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
-/* Коробка с тремя кнопками */
-.login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 380px; /* Ширина */
-    z-index: 10;
-}
-
-form {
+.login-form {
+    width: min(100%, 360px);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 13px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    background: rgba(25, 31, 41, 0.94);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.38);
 }
 
-/* Поля ввода */
-input {
+.login-form input {
     width: 100%;
-    background-color: #2f3133; /* Темно-серый фон */
-    border: 1px solid #393b3d; /* Тонкая рамка */
-    border-radius: 4px;
-    padding: 0 16px;
-    height: 48px; /* Высота как на оригинале */
-    color: #fff; /* Белый текст */
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.1s;
-}
-
-/* Текст исчезает при клике (это стандартное поведение) */
-input::placeholder {
-    color: #b8b8b8;
-}
-
-input:focus {
-    border-color: #666;
-}
-
-/* Кнопка "Авторизоваться" */
-.login-btn {
-    width: 100%;
-    background-color: #232527; /* Темный фон */
-    color: #fff;
-    border: 1px solid #555; /* Серая обводка */
-    border-radius: 4px;
     height: 48px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 4px;
+    padding: 0 15px;
+    border: 1px solid #465263;
+    border-radius: 9px;
+    outline: none;
+    background: #202834;
+    color: #f4f7fb;
+    font: inherit;
+    font-size: 15px;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.login-btn:hover {
-    background-color: #32353a;
+.login-form input::placeholder {
+    color: #aab5c3;
+    opacity: 1;
+}
+
+.login-form input:focus {
+    border-color: #72a8ff;
+    box-shadow: 0 0 0 3px rgba(86, 145, 240, 0.2);
+}
+
+.login-form button {
+    min-height: 48px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #397bd8, #6558c8);
+    color: #ffffff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 160ms ease, transform 160ms ease;
+}
+
+.login-form button:hover {
+    filter: brightness(1.1);
+}
+
+.login-form button:active {
+    transform: translateY(1px);
+}
+
+.login-form button:focus-visible {
+    outline: 3px solid rgba(139, 184, 255, 0.8);
+    outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 16px;
+    }
+
+    .login-form {
+        padding: 18px;
+    }
 }
