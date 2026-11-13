@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Локальный демонстрационный макет интерфейса. Данные не отправляются и не сохраняются.">
-    <title>Демо-макет входа</title>
+    <meta name="description" content="Локальный демонстрационный интерфейс. Данные не отправляются и не сохраняются.">
+    <title>Демо-панель</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="login-card" aria-labelledby="demo-title">
-        <div class="demo-label">DEMO · НЕ НАСТОЯЩИЙ ВХОД</div>
-        <h1 id="demo-title">Демонстрация входа</h1>
+        <div class="demo-label">DEMO · ТОЛЬКО ПРИМЕР</div>
+        <h1 id="demo-title">Демо-панель</h1>
 
         <div class="demo-fields">
             <input
                 class="demo-input"
                 type="text"
-                placeholder="Имя пользователя (пример)"
-                aria-label="Имя пользователя — демонстрационное поле"
+                placeholder="Первое поле для примера"
+                aria-label="Первое демонстрационное поле"
                 autocomplete="off"
                 autocapitalize="off"
                 spellcheck="false"
@@ -25,36 +25,50 @@
             <input
                 class="demo-input"
                 type="text"
-                placeholder="Любой текст для примера"
-                aria-label="Текст для примера — демонстрационное поле"
+                placeholder="Второе поле для примера"
+                aria-label="Второе демонстрационное поле"
                 autocomplete="off"
                 spellcheck="false"
             >
 
-            <button class="demo-submit" type="button" data-demo-message="Это только визуальный макет. Введённый текст никуда не отправляется.">
-                Проверить макет
+            <button class="demo-submit" type="button"
+                data-demo-message="Готово! Это только демонстрация — введённый текст не обрабатывается.">
+                Продолжить демо
             </button>
         </div>
 
         <p class="demo-help" id="demo-status" role="status" aria-live="polite">
-            Это демонстрация интерфейса, а не настоящая авторизация.
+            Здесь можно проверить внешний вид полей и кнопок.
         </p>
 
         <hr class="demo-divider">
 
-        <div class="demo-footer">
-            <span>Нужна помощь?</span>
-            <button class="demo-link" type="button" data-demo-message="В демонстрационном макете восстановление доступа не используется.">
-                Забыли данные?
+        <div class="demo-actions">
+            <button class="demo-action" type="button"
+                data-demo-message="Раздел «Обзор» показан только для примера.">
+                Открыть раздел «Обзор»
             </button>
-            <button class="demo-link" type="button" data-demo-message="Это демонстрационный макет — регистрация здесь не предусмотрена.">
-                Регистрация
+            <button class="demo-action" type="button"
+                data-demo-message="Быстрый просмотр — демонстрационная кнопка.">
+                Быстрый просмотр
+            </button>
+            <button class="demo-action" type="button"
+                data-demo-message="Другие варианты доступны только в демонстрационном макете.">
+                Другие варианты демо
+            </button>
+        </div>
+
+        <div class="demo-footer">
+            <span>Это тестовый интерфейс.</span>
+            <button class="demo-link" type="button"
+                data-demo-message="Спасибо за просмотр демонстрационного макета!">
+                Показать подсказку
             </button>
         </div>
 
         <p class="demo-notice">
-            Демо-режим: поля предназначены только для визуального теста.
-            Сайт не считывает, не отправляет и не сохраняет введённый текст.
+            ДЕМО: введённый текст не считывается скриптами, не отправляется
+            на сервер и не сохраняется.
         </p>
     </main>
 
