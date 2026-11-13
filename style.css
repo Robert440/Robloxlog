@@ -14,7 +14,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px 16px;
+    padding: 24px 15px;
     background-color: #101214;
     background-image: url("bg.jpg");
     background-size: cover;
@@ -25,13 +25,10 @@ body {
 }
 
 .login-card {
-    width: 500px;
-    max-width: calc(100vw - 32px);
-    min-height: 540px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 34px 30px 30px;
+    width: 568px;
+    max-width: calc(100vw - 30px);
+    min-height: 650px;
+    padding: 24px 17px 22px;
     border: 1px solid #272930;
     border-radius: 0;
     background: #272930;
@@ -40,12 +37,12 @@ body {
 
 .demo-label {
     width: fit-content;
-    margin: 0 auto 12px;
-    padding: 5px 9px;
-    border: 1px solid #56617a;
+    margin: 0 auto 9px;
+    padding: 4px 9px;
+    border: 1px solid #555965;
     border-radius: 999px;
-    background: #3b455b;
-    color: #d0dcff;
+    background: #393c45;
+    color: #e0e3ec;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -53,9 +50,9 @@ body {
 }
 
 .login-card h1 {
-    margin: 0 0 20px;
+    margin: 0 0 13px;
     color: #fafbff;
-    font-size: 34px;
+    font-size: 39px;
     font-weight: 750;
     line-height: 1.15;
     text-align: center;
@@ -70,69 +67,95 @@ body {
 .demo-input {
     display: block;
     width: 100%;
-    height: 52px;
-    padding: 0 16px;
-    border: 1px solid #555b68;
-    border-radius: 11px;
+    height: 47px;
+    padding: 0 15px;
+    border: 1px solid #4b505c;
+    border-radius: 10px;
     outline: none;
-    background: #191c23;
+    background: #383b44;
     color: #f7f8fb;
-    font: 16px Arial, Helvetica, sans-serif;
+    font: 18px Arial, Helvetica, sans-serif;
     transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
 .demo-input::placeholder {
-    color: #b9bdc8;
+    color: #e0e2e9;
     opacity: 1;
 }
 
 .demo-input:focus {
-    border-color: #a4b7e8;
-    background: #1d222d;
-    box-shadow: 0 0 0 3px rgba(121, 153, 229, 0.15);
+    border-color: #aeb5c6;
+    background: #3d4049;
+    box-shadow: 0 0 0 3px rgba(210, 216, 230, 0.1);
 }
 
 .demo-submit {
     width: 100%;
-    min-height: 53px;
-    margin-top: 6px;
-    border: 1px solid #f4f4f6;
-    border-radius: 11px;
-    background: #eeeeF1;
-    color: #111318;
-    font: 700 17px Arial, Helvetica, sans-serif;
+    min-height: 47px;
+    margin-top: -4px;
+    border: 1px solid #d7d9df;
+    border-radius: 10px;
+    background: transparent;
+    color: #d7d9e0;
+    font: 18px Arial, Helvetica, sans-serif;
     cursor: pointer;
-    transition: background-color 160ms ease, transform 160ms ease;
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .demo-submit:hover {
-    background: #ffffff;
+    background: #353841;
+    color: #ffffff;
 }
 
-.demo-submit:active {
+.demo-submit:active,
+.demo-action:active {
     transform: translateY(1px);
 }
 
 .demo-submit:focus-visible,
+.demo-action:focus-visible,
 .demo-link:focus-visible {
     outline: 2px solid #ffffff;
-    outline-offset: 4px;
+    outline-offset: 3px;
 }
 
 .demo-help {
     min-height: 20px;
-    margin: 16px 0 0;
-    color: #e0e2e8;
-    font-size: 13px;
-    line-height: 1.45;
+    margin: 26px 0 0;
+    color: #f0f1f5;
+    font-size: 18px;
+    line-height: 1.4;
     text-align: center;
 }
 
 .demo-divider {
     height: 1px;
-    margin: 18px 0;
+    margin: 30px 0 22px;
     border: 0;
-    background: #595d67;
+    background: #41444d;
+}
+
+.demo-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.demo-action {
+    width: 100%;
+    min-height: 47px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #3b3e48;
+    color: #f4f5f8;
+    font: 18px Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.demo-action:hover {
+    background: #454954;
 }
 
 .demo-footer {
@@ -140,9 +163,10 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 7px 13px;
+    gap: 7px 12px;
+    margin-top: 39px;
     color: #f0f1f5;
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
 }
 
@@ -158,41 +182,47 @@ body {
 }
 
 .demo-link:hover {
-    color: #d4ddf7;
+    color: #d6dbe8;
 }
 
 .demo-notice {
-    margin: 15px 0 0;
-    color: #d0d5e2;
-    font-size: 12px;
-    line-height: 1.45;
+    margin: 14px 0 0;
+    color: #c4c8d2;
+    font-size: 11px;
+    line-height: 1.4;
     text-align: center;
 }
 
 @media (max-width: 520px) {
     body {
-        padding: 20px 13px;
+        padding: 15px 10px;
     }
 
     .login-card {
         width: 100%;
         max-width: 100%;
         min-height: 0;
-        padding: 25px 19px 22px;
+        padding: 23px 14px 20px;
         border-radius: 0;
     }
 
     .login-card h1 {
-        font-size: 28px;
+        font-size: 31px;
     }
 
-    .demo-input {
-        height: 50px;
+    .demo-input,
+    .demo-submit,
+    .demo-action {
+        font-size: 15px;
+    }
+
+    .demo-help {
         font-size: 15px;
     }
 
     .demo-footer {
-        gap: 9px 12px;
-        font-size: 12px;
+        gap: 8px 10px;
+        margin-top: 30px;
+        font-size: 14px;
     }
 }
