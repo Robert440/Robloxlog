@@ -32,9 +32,9 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 34px 30px 30px;
-    border: 1px solid #50545e;
-    border-radius: 19px;
-    background: #30333d;
+    border: 1px solid #272930;
+    border-radius: 0;
+    background: #272930;
     box-shadow: 0 20px 54px rgba(0, 0, 0, 0.58);
 }
 
@@ -179,7 +179,7 @@ body {
         max-width: 100%;
         min-height: 0;
         padding: 25px 19px 22px;
-        border-radius: 16px;
+        border-radius: 0;
     }
 
     .login-card h1 {
