@@ -3,24 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Демонстрационная форма</title>
+    <meta name="description" content="Локальный демонстрационный макет интерфейса. Данные не отправляются и не сохраняются.">
+    <title>Демо-макет входа</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form class="login-form" autocomplete="off" onsubmit="return false;">
-        <input
-            type="text"
-            placeholder="Логин"
-            aria-label="Логин"
-            autocomplete="off"
-        >
-        <input
-            type="password"
-            placeholder="Пароль"
-            aria-label="Пароль"
-            autocomplete="new-password"
-        >
-        <button type="button">Авторизоваться</button>
-    </form>
+    <main class="login-card" aria-labelledby="demo-title">
+        <div class="demo-label">DEMO · НЕ НАСТОЯЩИЙ ВХОД</div>
+        <h1 id="demo-title">Демонстрация входа</h1>
+
+        <div class="demo-fields">
+            <input
+                class="demo-input"
+                type="text"
+                placeholder="Имя пользователя (пример)"
+                aria-label="Имя пользователя — демонстрационное поле"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+            >
+            <input
+                class="demo-input"
+                type="text"
+                placeholder="Любой текст для примера"
+                aria-label="Текст для примера — демонстрационное поле"
+                autocomplete="off"
+                spellcheck="false"
+            >
+
+            <button class="demo-submit" type="button" data-demo-message="Это только визуальный макет. Введённый текст никуда не отправляется.">
+                Проверить макет
+            </button>
+        </div>
+
+        <p class="demo-help" id="demo-status" role="status" aria-live="polite">
+            Это демонстрация интерфейса, а не настоящая авторизация.
+        </p>
+
+        <hr class="demo-divider">
+
+        <div class="demo-footer">
+            <span>Нужна помощь?</span>
+            <button class="demo-link" type="button" data-demo-message="В демонстрационном макете восстановление доступа не используется.">
+                Забыли данные?
+            </button>
+            <button class="demo-link" type="button" data-demo-message="Это демонстрационный макет — регистрация здесь не предусмотрена.">
+                Регистрация
+            </button>
+        </div>
+
+        <p class="demo-notice">
+            Демо-режим: поля предназначены только для визуального теста.
+            Сайт не считывает, не отправляет и не сохраняет введённый текст.
+        </p>
+    </main>
+
+    <script>
+        // Local-only demo feedback. This script never reads the input fields.
+        document.querySelectorAll("[data-demo-message]").forEach((button) => {
+            button.addEventListener("click", () => {
+                document.getElementById("demo-status").textContent =
+                    button.dataset.demoMessage;
+            });
+        });
+    </script>
 </body>
 </html>
