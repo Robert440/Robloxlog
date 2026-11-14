@@ -9,23 +9,6 @@ app.set('trust proxy', true);
 // Позволяем серверу читать JSON из запросов
 app.use(express.json());
 
-// 🌐 ЛОГГЕР ПОСЕЩЕНИЙ
-app.use((req, res, next) => {
-    if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
-        const ip = req.ip || req.connection.remoteAddress;
-        const userAgent = req.headers['user-agent'] || 'Неизвестное устройство';
-        const time = new Date().toLocaleString('ru-RU');
-        
-        console.log('\n====================================');
-        console.log(`🌐 НОВЫЙ ПОСЕТИТЕЛЬ ЗАШЕЛ НА САЙТ!`);
-        console.log(`📍 IP: ${ip}`);
-        console.log(`💻 Устройство: ${userAgent}`);
-        console.log(`⏰ Время: ${time}`);
-        console.log('====================================\n');
-    }
-    next();
-});
-
 // 🔥 ОБРАБОТКА ЛОГИНОВ И ПАРОЛЕЙ
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -40,7 +23,7 @@ app.post('/login', (req, res) => {
     res.status(200).send('OK');
 });
 
-// Фикс MIME-типа для картинки фона (чтобы браузер не тупил)
+// Фикс MIME-типа для картинки фона
 app.get('/bg.jpg', (req, res, next) => {
     res.type('png');
     const stream = fs.createReadStream(path.join(__dirname, 'bg.jpg'));
