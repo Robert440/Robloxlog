@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const fs = require('fs');
 
 app.disable('x-powered-by');
 app.set('trust proxy', true);
@@ -25,6 +26,16 @@ app.use((req, res, next) => {
         res.set('Expires', '0');
     }
     next();
+});
+
+// The current bg.jpg contains PNG data despite its .jpg filename.
+// Serve the same file with the correct MIME type; do not alter the image itself.
+app.get('/bg.jpg', (req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.type('png');
+    const stream = fs.createReadStream(path.join(__dirname, 'bg.jpg'));
+    stream.on('error', next);
+    stream.pipe(res);
 });
 
 // Serve the original site files, including the original bg.jpg and style.css.
