@@ -16,7 +16,7 @@ body {
     justify-content: center;
     padding: 24px 15px;
     background-color: #101214;
-    background-image: url("bg.jpg");
+    background-image: url("/bg.jpg?v=original-restore-20261114");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
